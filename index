@@ -1,108 +1,256 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Dumbbell, Globe2, Smartphone, QrCode, CreditCard, ArrowRight } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
-const nav = [
-  { href: "#features", label: "Features" },
-  { href: "#how", label: "How It Works" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
-];
-
-export default function NomadLyftLanding() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-white text-slate-900">
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-violet-600 grid place-items-center text-white font-bold">N</div>
-            <span className="font-semibold tracking-tight">NomadLyft</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            {nav.map((n) => (
-              <a key={n.href} href={n.href} className="hover:text-violet-700 transition-colors">
-                {n.label}
-              </a>
-            ))}
-            <Button className="rounded-2xl">Create free account</Button>
-          </nav>
-          <button onClick={() => setMobileOpen((v) => !v)} className="md:hidden inline-flex items-center p-2 rounded-xl border">
-            <span className="sr-only">Toggle Menu</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          </button>
-        </div>
-        {mobileOpen && (
-          <div className="md:hidden border-t bg-white">
-            <div className="max-w-6xl mx-auto px-4 py-2 grid gap-2">
-              {nav.map((n) => (
-                <a key={n.href} href={n.href} className="py-2" onClick={() => setMobileOpen(false)}>
-                  {n.label}
-                </a>
-              ))}
-              <Button className="rounded-2xl w-full mt-2">Create free account</Button>
-            </div>
-          </div>
-        )}
-      </header>
-
-      <section className="relative bg-[url('/hero-bg.jpg')] bg-cover bg-center">
-        <div className="max-w-6xl mx-auto px-4 pt-16 pb-24 grid md:grid-cols-2 gap-10 items-center bg-white/70 backdrop-blur rounded-3xl">
-          <div>
-            <motion.h1 initial={{opacity:0, y:10}} whileInView={{opacity:1, y:0}} viewport={{once:true}} className="text-4xl md:text-6xl font-extrabold tracking-tight">
-              Train <span className="text-violet-700">Everywhere</span>
-            </motion.h1>
-            <p className="mt-4 text-lg text-slate-600 max-w-prose">
-              A global fitness app for travelers and nomads. Find gyms near you, buy a pass, and check in with a QR code—no contracts.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button size="lg" className="rounded-2xl">
-                Find gyms near me <ArrowRight className="ml-2 h-4 w-4"/>
-              </Button>
-              <a href="#pricing" className="px-5 py-2.5 rounded-2xl border font-medium hover:bg-slate-50">See pricing</a>
-            </div>
-          </div>
-          <Card className="rounded-2xl overflow-hidden">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Smartphone className="h-5 w-5"/>App Preview</CardTitle>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              <div className="grid md:grid-cols-3 gap-3">
-                <img src="/preview-countries.png" alt="Countries" className="aspect-[9/19] rounded-2xl border object-cover"/>
-                <img src="/preview-gyms.png" alt="Gyms List" className="aspect-[9/19] rounded-2xl border object-cover"/>
-                <img src="/preview-map.png" alt="Map" className="aspect-[9/19] rounded-2xl border object-cover"/>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section id="features" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
-          <Card className="rounded-2xl shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Dumbbell className="h-5 w-5"/>Contract‑Free Access</CardTitle>
-            </CardHeader>
-            <CardContent className="text-slate-600">Buy day or multi‑day passes without paperwork or long‑term commitments.</CardContent>
-          </Card>
-          <Card className="rounded-2xl shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Globe2 className="h-5 w-5"/>Gyms Worldwide</CardTitle>
-            </CardHeader>
-            <CardContent className="text-slate-600">Discover quality gyms in popular cities—perfect for travel or nomad life.</CardContent>
-          </Card>
-          <Card className="rounded-2xl shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><QrCode className="h-5 w-5"/>QR Check‑In</CardTitle>
-            </CardHeader>
-            <CardContent className="text-slate-600">Checkout securely, receive a QR code, and start training in seconds.</CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Keep rest of sections unchanged */}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NomadLyft — Train Everywhere</title>
+  <meta name="description" content="Find gyms near you, buy a pass, and check in with a QR code. No contracts." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b21b6'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='28' fill='white' font-family='system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif'%3EN%3C/text%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html{scroll-behavior:smooth}</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-amber-50 via-white to-white text-slate-900 selection:bg-violet-100 selection:text-violet-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-violet-700 grid place-items-center text-white font-bold">N</div>
+        <span class="font-semibold tracking-tight">NomadLyft</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#features" class="hover:text-violet-700">Features</a>
+        <a href="#how" class="hover:text-violet-700">How It Works</a>
+        <a href="#pricing" class="hover:text-violet-700">Pricing</a>
+        <a href="#faq" class="hover:text-violet-700">FAQ</a>
+        <a href="#signup" class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-700 text-white font-medium hover:bg-violet-800">Create free account</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden inline-flex items-center p-2 rounded-xl border">
+        <span class="sr-only">Toggle Menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
-  );
-}
+    <div id="mobileNav" class="hidden md:hidden border-t bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-2 grid gap-2 text-sm">
+        <a href="#features" class="py-2">Features</a>
+        <a href="#how" class="py-2">How It Works</a>
+        <a href="#pricing" class="py-2">Pricing</a>
+        <a href="#faq" class="py-2">FAQ</a>
+        <a href="#signup" class="rounded-2xl border px-4 py-2 text-center font-medium">Create free account</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 -z-10 bg-white/65 backdrop-blur"></div>
+    <div class="max-w-6xl mx-auto px-4 pt-16 pb-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+          Train <span class="text-violet-700">Everywhere</span>
+        </h1>
+        <p class="mt-4 text-lg text-slate-700 max-w-prose">
+          A global fitness app for travelers and nomads. Find gyms near you, buy a pass, and check in with a QR code—no contracts.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <button id="nearbyBtn" class="px-6 py-3 rounded-2xl bg-violet-700 text-white font-semibold hover:bg-violet-800 inline-flex items-center">
+            <span>Find gyms near me</span>
+            <svg class="ml-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <a href="#pricing" class="px-5 py-3 rounded-2xl border font-medium hover:bg-white/60">See pricing</a>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden border bg-white/70">
+        <div class="px-6 pt-6">
+          <h3 class="text-base font-semibold flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+            App Preview
+          </h3>
+        </div>
+        <div class="p-6 grid md:grid-cols-3 gap-3">
+          <div class="aspect-[9/19] rounded-2xl border bg-slate-100 grid place-items-center text-slate-500 text-sm">Countries</div>
+          <div class="aspect-[9/19] rounded-2xl border bg-slate-100 grid place-items-center text-slate-500 text-sm">Gyms list</div>
+          <div class="aspect-[9/19] rounded-2xl border bg-slate-100 grid place-items-center text-slate-500 text-sm">Map</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl shadow-lg border bg-white">
+        <div class="p-5 flex items-center gap-2 font-semibold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M6 6h4v12H6zM14 6h4v12h-4z"/></svg>
+          Contract-Free Access
+        </div>
+        <p class="px-5 pb-5 text-slate-600">Buy day or multi-day passes without paperwork or long-term commitments.</p>
+      </div>
+      <div class="rounded-2xl shadow-lg border bg-white">
+        <div class="p-5 flex items-center gap-2 font-semibold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Gyms Worldwide
+        </div>
+        <p class="px-5 pb-5 text-slate-600">Discover quality gyms in popular cities—perfect for travel or nomad life.</p>
+      </div>
+      <div class="rounded-2xl shadow-lg border bg-white">
+        <div class="p-5 flex items-center gap-2 font-semibold">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4"/></svg>
+          QR Check-In
+        </div>
+        <p class="px-5 pb-5 text-slate-600">Checkout securely, receive a QR code, and start training in seconds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">How it works</h2>
+      <ol class="mt-8 grid md:grid-cols-4 gap-6 text-slate-700">
+        <li class="rounded-xl border bg-white p-5">
+          <div class="text-sm font-semibold text-violet-700">Step 1</div>
+          <div class="mt-1 font-semibold">Search</div>
+          <p class="mt-2 text-sm">Allow location or select a city to see nearby gyms.</p>
+        </li>
+        <li class="rounded-xl border bg-white p-5">
+          <div class="text-sm font-semibold text-violet-700">Step 2</div>
+          <div class="mt-1 font-semibold">Choose a pass</div>
+          <p class="mt-2 text-sm">Day, 3-day, or weekly—no contracts.</p>
+        </li>
+        <li class="rounded-xl border bg-white p-5">
+          <div class="text-sm font-semibold text-violet-700">Step 3</div>
+          <div class="mt-1 font-semibold">Pay securely</div>
+          <p class="mt-2 text-sm">Apple/Google Pay and major cards.</p>
+        </li>
+        <li class="rounded-xl border bg-white p-5">
+          <div class="text-sm font-semibold text-violet-700">Step 4</div>
+          <div class="mt-1 font-semibold">Scan & train</div>
+          <p class="mt-2 text-sm">Use your QR code at the gym entrance.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Simple pricing</h2>
+      <p class="mt-2 text-slate-600">Prices vary by gym and city. Typical ranges below.</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="text-lg font-semibold">Day Pass</h3>
+          <div class="mt-2 text-3xl font-extrabold">$8–$20</div>
+          <p class="mt-2 text-sm text-slate-600">Perfect for a quick session.</p>
+          <a href="#signup" class="mt-4 inline-block rounded-2xl bg-violet-700 text-white px-4 py-2 font-medium hover:bg-violet-800">Get started</a>
+        </div>
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="text-lg font-semibold">3-Day Pass</h3>
+          <div class="mt-2 text-3xl font-extrabold">$18–$45</div>
+          <p class="mt-2 text-sm text-slate-600">Great for weekend trips.</p>
+          <a href="#signup" class="mt-4 inline-block rounded-2xl bg-violet-700 text-white px-4 py-2 font-medium hover:bg-violet-800">Get started</a>
+        </div>
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="text-lg font-semibold">Weekly Pass</h3>
+          <div class="mt-2 text-3xl font-extrabold">$30–$70</div>
+          <p class="mt-2 text-sm text-slate-600">For longer stays.</p>
+          <a href="#signup" class="mt-4 inline-block rounded-2xl bg-violet-700 text-white px-4 py-2 font-medium hover:bg-violet-800">Get started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold tracking-tight">FAQ</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6 text-slate-700">
+        <details class="rounded-xl border bg-white p-5">
+          <summary class="font-semibold cursor-pointer">Do I need a membership?</summary>
+          <p class="mt-2 text-sm">No. Buy passes in the app—no long-term contracts.</p>
+        </details>
+        <details class="rounded-xl border bg-white p-5">
+          <summary class="font-semibold cursor-pointer">How do I check in?</summary>
+          <p class="mt-2 text-sm">After purchase you’ll get a QR code. Show it at the gym to enter.</p>
+        </details>
+        <details class="rounded-xl border bg-white p-5">
+          <summary class="font-semibold cursor-pointer">What cities are supported?</summary>
+          <p class="mt-2 text-sm">Major destinations first, expanding monthly.</p>
+        </details>
+        <details class="rounded-xl border bg-white p-5">
+          <summary class="font-semibold cursor-pointer">Refunds?</summary>
+          <p class="mt-2 text-sm">If you can’t use a pass, contact support and we’ll help.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup -->
+  <section id="signup" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Be first to know</h2>
+        <p class="mt-2 text-slate-600">Get launch updates and beta access.</p>
+      </div>
+      <form id="emailForm" class="rounded-2xl border bg-white p-3 flex gap-3">
+        <input id="emailInput" type="email" required placeholder="you@example.com" class="flex-1 px-4 py-2 rounded-xl border outline-none focus:ring-2 focus:ring-violet-300"/>
+        <button class="px-5 py-2 rounded-xl bg-violet-700 text-white font-medium hover:bg-violet-800">Notify me</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t bg-white">
+    <div class="max-w-6xl mx-auto px-4 text-sm text-slate-600 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-lg bg-violet-700 grid place-items-center text-white font-bold">N</div>
+        <span>NomadLyft</span>
+      </div>
+      <div class="space-y-1">
+        <div>Support: <a class="underline" href="mailto:support@nomadlyft.com">support@nomadlyft.com</a></div>
+        <div class="text-xs">© <span id="year"></span> NomadLyft. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn?.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+
+    // Handle "Find gyms near me" demo
+    const nearbyBtn = document.getElementById('nearbyBtn');
+    nearbyBtn?.addEventListener('click', () => {
+      if (!('geolocation' in navigator)) {
+        alert('Geolocation is not supported on this device.');
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          const url = `https://www.google.com/maps/search/gym/@${latitude},${longitude},14z`;
+          window.open(url, '_blank');
+        },
+        () => alert('Could not access location. You can type a city in the search when the app launches.')
+      );
+    });
+
+    // Email capture (demo)
+    const form = document.getElementById('emailForm');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      if (email) {
+        alert('Thanks! We\\'ll notify ' + email + ' at launch.');
+        form.reset();
+      }
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
